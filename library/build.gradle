@@ -10,13 +10,13 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    /*sourceSets {
+    sourceSets {
         main {
             jniLibs.srcDirs = ['src/main/libs']
-            jni.srcDirs = ['src/main/jni']
-            assets.srcDirs = ['src/main/assets']
+            jni.srcDirs = []
+//            assets.srcDirs = ['src/main/assets']
         }
-    }*/
+    }
 
     buildTypes {
         release {
@@ -26,17 +26,6 @@ android {
     }
 }
 
-task ndkBuild(type: Exec) {
-    def ndkDir = project.plugins.findPlugin('com.android.library').sdkHandler.getNdkFolder()
-    println('File path:'+ndkDir)
-    println(buildDir)
-    commandLine "$ndkDir/ndk-build.cmd", '-C', 'src/main/jni',
-            "NDK_OUT=$buildDir/ndk/obj",
-            "NDK_APP_DST_DIR=$buildDir/ndk/libs/\$(TARGET_ARCH_ABI)"
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
 }

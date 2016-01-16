@@ -1,13 +1,14 @@
 package uuxia.het.com.zbarscanlibrary;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -23,7 +24,7 @@ import uuxia.het.com.library.coder.ZBarDecoderNativeManager;
 import uuxia.het.com.library.view.CameraManager;
 import uuxia.het.com.library.view.CameraPreview;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findViewById();

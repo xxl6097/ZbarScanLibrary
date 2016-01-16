@@ -3,6 +3,13 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
@@ -43,8 +50,8 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="masterDetails">
     <states>
@@ -54,7 +61,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.27388534" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
