@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(uuxia.het.com.library.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findViewById();
         addEvents();
@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViewById() {
-        scanPreview = (FrameLayout) findViewById(uuxia.het.com.library.R.id.capture_preview);
-        scanResult = (TextView) findViewById(uuxia.het.com.library.R.id.capture_scan_result);
-        scanRestart = (Button) findViewById(uuxia.het.com.library.R.id.capture_restart_scan);
-        scanContainer = (RelativeLayout) findViewById(uuxia.het.com.library.R.id.capture_container);
-        scanCropView = (RelativeLayout) findViewById(uuxia.het.com.library.R.id.capture_crop_view);
-        scanLine = (ImageView) findViewById(uuxia.het.com.library.R.id.capture_scan_line);
+        scanPreview = (FrameLayout) findViewById(R.id.capture_preview);
+        scanResult = (TextView) findViewById(R.id.capture_scan_result);
+        scanRestart = (Button) findViewById(R.id.capture_restart_scan);
+        scanContainer = (RelativeLayout) findViewById(R.id.capture_container);
+        scanCropView = (RelativeLayout) findViewById(R.id.capture_crop_view);
+        scanLine = (ImageView) findViewById(R.id.capture_scan_line);
     }
 
     private void addEvents() {
