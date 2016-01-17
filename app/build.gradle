@@ -22,5 +22,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+//    compile 'com.github.xxl6097:zbarscanlibrary:1.0.0'
     compile project(':library')
 }

@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -61,6 +62,9 @@ public class QrScanManager {
         scanContainer = (RelativeLayout) v.findViewById(R.id.capture_container);
         scanCropView = (RelativeLayout) v.findViewById(R.id.capture_crop_view);
         scanLine = (ImageView) v.findViewById(R.id.capture_scan_line);
+        if (scanLine != null){
+            scanLine.setVisibility(View.VISIBLE);
+        }
     }
 
     private void addEvents() {
@@ -145,13 +149,16 @@ public class QrScanManager {
             initCrop();
             ZBarDecoderNativeManager zBarDecoder = new ZBarDecoderNativeManager();
             String result = zBarDecoder.decodeCrop(rotatedData, size.width, size.height, mCropRect.left, mCropRect.top, mCropRect.width(), mCropRect.height());
-
             if (!TextUtils.isEmpty(result)) {
                 previewing = false;
                 mCamera.setPreviewCallback(null);
                 mCamera.stopPreview();
-//                scanResult.setText("barcode result " + result);
+//                scanResult.setText(qrScanCallBack+"barcode result " + result);
+
                 if (qrScanCallBack != null){
+                    if (scanLine != null){
+                        scanLine.setVisibility(View.INVISIBLE);
+                    }
                     qrScanCallBack.onResult(result);
                 }
                 barcodeScanned = true;
@@ -214,13 +221,7 @@ public class QrScanManager {
         return 0;
     }
 
-    public static void setCallBack(QrScanCallBack qrScanManager){
-        if (instance != null){
-            instance.setQrScanCallBack(qrScanManager);
-        }
-    }
-
-    public void setQrScanCallBack(QrScanCallBack qrScanCallBack) {
+    public void setCallBack(QrScanCallBack qrScanCallBack) {
         this.qrScanCallBack = qrScanCallBack;
     }
 }
