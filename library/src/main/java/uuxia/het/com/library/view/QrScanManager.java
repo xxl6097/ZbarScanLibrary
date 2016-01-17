@@ -117,10 +117,6 @@ public class QrScanManager {
             mCamera.release();
             mCamera = null;
         }
-
-//        if (mCameraManager != null){
-//            mCameraManager.closeDriver();
-//        }
     }
 
     private Runnable doAutoFocus = new Runnable() {
@@ -150,18 +146,17 @@ public class QrScanManager {
             ZBarDecoderNativeManager zBarDecoder = new ZBarDecoderNativeManager();
             String result = zBarDecoder.decodeCrop(rotatedData, size.width, size.height, mCropRect.left, mCropRect.top, mCropRect.width(), mCropRect.height());
             if (!TextUtils.isEmpty(result)) {
-                previewing = false;
-                mCamera.setPreviewCallback(null);
-                mCamera.stopPreview();
+//                previewing = false;
+//                mCamera.setPreviewCallback(null);
+//                mCamera.stopPreview();
 //                scanResult.setText(qrScanCallBack+"barcode result " + result);
 
+                release();
                 if (qrScanCallBack != null){
-                    if (scanLine != null){
-                        scanLine.setVisibility(View.INVISIBLE);
-                    }
                     qrScanCallBack.onResult(result);
                 }
                 barcodeScanned = true;
+                Log.i("--------","----"+result);
             }
         }
     };
