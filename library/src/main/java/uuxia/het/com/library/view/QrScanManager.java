@@ -54,12 +54,6 @@ public class QrScanManager {
         initViews();
     }
 
-    public static void init(Activity c,View view){
-        if (instance == null) {
-            instance = new QrScanManager(c, view);
-        }
-    }
-
     private void findViewById(View v) {
         scanPreview = (FrameLayout) v.findViewById(R.id.capture_preview);
         scanResult = (TextView) v.findViewById(R.id.capture_scan_result);
@@ -99,7 +93,6 @@ public class QrScanManager {
         mCamera = mCameraManager.getCamera();
         mPreview = new CameraPreview(activity, mCamera, previewCb, autoFocusCB);
         scanPreview.addView(mPreview);
-
         TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT,
                 0.85f);
         animation.setDuration(3000);
@@ -108,21 +101,22 @@ public class QrScanManager {
         scanLine.startAnimation(animation);
     }
 
-    public static void release(){
-        if (instance != null)
-            instance.releaseCamera();
-    }
-
     /**
      * release camera
      */
-    public void releaseCamera() {
-        if (mCamera != null) {
+    public void release() {
+        if (previewing && mCamera != null) {
             previewing = false;
             mCamera.setPreviewCallback(null);
+//            mPreview.getHolder().removeCallback(mPreview);
+            mCamera.stopPreview();
             mCamera.release();
             mCamera = null;
         }
+
+//        if (mCameraManager != null){
+//            mCameraManager.closeDriver();
+//        }
     }
 
     private Runnable doAutoFocus = new Runnable() {

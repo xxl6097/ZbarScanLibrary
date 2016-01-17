@@ -9,6 +9,7 @@ import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PreviewCallback;
+import android.os.Build;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -84,7 +85,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 		try {
 			// Hard code camera surface rotation 90 degs to match Activity view
 			// in portrait
-			mCamera.setDisplayOrientation(90);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+				mCamera.setDisplayOrientation(90);
+			}
 
 			mCamera.setPreviewDisplay(mHolder);
 			mCamera.setPreviewCallback(previewCallback);

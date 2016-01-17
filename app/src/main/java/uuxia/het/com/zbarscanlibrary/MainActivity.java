@@ -9,18 +9,24 @@ import uuxia.het.com.library.callback.QrScanCallBack;
 import uuxia.het.com.library.view.QrScanManager;
 
 public class MainActivity extends Activity implements QrScanCallBack{
+    private QrScanManager qrScanManager;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        QrScanManager.init(this,findViewById(R.id.borad));
-        QrScanManager.setCallBack(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        qrScanManager = new QrScanManager(this,findViewById(R.id.borad));
+        qrScanManager.setCallBack(this);
     }
 
     public void onPause() {
         super.onPause();
-        QrScanManager.release();
+        qrScanManager.release();
     }
 
     @Override
