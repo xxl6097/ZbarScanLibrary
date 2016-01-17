@@ -49,7 +49,6 @@ public final class CameraManager {
 	/**
 	 * Opens the camera driver and initializes the hardware parameters.
 	 * 
-	 * @param holder
 	 *            The surface object which the camera will draw preview frames
 	 *            into.
 	 * @throws IOException

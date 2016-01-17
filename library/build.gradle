@@ -5,10 +5,14 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 4
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        if (project.hasProperty('VERSION_CODE')) {
+            versionCode Integer.parseInt(VERSION_CODE)
+        }
+        if (project.hasProperty('VERSION_NAME')) {
+            versionName VERSION_NAME
+        }
     }
     sourceSets {
         main {
@@ -29,3 +33,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+apply from: '../github.gradle'
