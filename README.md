@@ -7,6 +7,8 @@ ZbarScanLibrary是之前的ZBar解析二维码项目的重构和优化
 >* 使用了最新版本的libiconv库进行编译，版本号：1.14；下载地址： http://www.gnu.org/software/libiconv/
 >* 重新修改ZBar对中文的支持，并且可以解析GBK，UTF-8格式生成的二维码图片
 >* 使用最新的ndk-r10d进行ndk-build，支持64位cpu
+
+
 ##使用步骤
 **1.在activity布局中加入如下：**
 
@@ -22,7 +24,7 @@ ZbarScanLibrary是之前的ZBar解析二维码项目的重构和优化
 
 </RelativeLayout>
 ```
-**2.activity中生命周期设备：**
+**2.activity中生命周期设置：**
 
 ```
 public class GotoScanActivity extends Activity implements ZBarQrScanCallBack {
