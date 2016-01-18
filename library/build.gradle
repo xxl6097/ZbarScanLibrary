@@ -30,8 +30,5 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-apply from: '../github.gradle'
+//apply from: '../github.gradle'
+apply from: '../gradle-mvn-push-het.gradle'

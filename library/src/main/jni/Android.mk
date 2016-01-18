@@ -59,7 +59,7 @@ LOCAL_SRC_FILES :=	convert.c \
 					decoder/ean.c \
 					decoder/databar.c \
 					decoder/i25.c \
-					uuxia_het_com_library_coder_ZBarDecoderNativeManager.c
+					ZBarDecoderNativeManager.c
 	
 LOCAL_CFLAGS := -I$(LOCAL_PATH) -I$(LOCAL_PATH)/$(LIBICONV)
 LOCAL_LDLIBS := -llog
