@@ -34,5 +34,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 }
 
-//apply from: '../github.gradle'
-apply from: '../gradle-mvn-push-het.gradle'
+apply from: '../github.gradle'
+//apply from: '../gradle-mvn-push-het.gradle'

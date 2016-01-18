@@ -44,7 +44,7 @@ public class ZBarQrScanManager implements SurfaceHolder.Callback {
     private BeepManager mBeepManager;
     private ObjectAnimator mScanMaskObjectAnimator = null;
     private Rect cropRect;
-    private int dataMode = DecodeUtils.DECODE_DATA_MODE_QRCODE;
+    private int dataMode = DecodeUtils.DECODE_DATA_MODE_ALL;
     private Activity activity;
 
     private ZBarQrScanCallBack callBack;
