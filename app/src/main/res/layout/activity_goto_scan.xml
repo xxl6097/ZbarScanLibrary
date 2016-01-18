@@ -5,7 +5,6 @@
     android:orientation="vertical" >
 
     <include
-        android:id="@+id/borad"
-        layout="@layout/qr_layout"/>
+        layout="@layout/captrue_layout"/>
 
 </RelativeLayout>

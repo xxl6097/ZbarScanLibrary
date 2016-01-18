@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/capture_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:id="@+id/capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/capture_error_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF000000"/>
+
+        <RelativeLayout
+            android:id="@+id/capture_crop_view"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:src="@drawable/zbar_a4i"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@drawable/zbar_a4e"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/zbar_a4j"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/zbar_a4h"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/capture_scan_mask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/zbar_a4b" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/capture_mask_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/capture_crop_view"
+            android:background="#CC000000"/>
+
+        <ImageView
+            android:id="@+id/capture_mask_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/capture_crop_view"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/capture_mask_left"
+            android:background="#CC000000"/>
+
+        <ImageView
+            android:id="@+id/capture_mask_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/capture_mask_top"
+            android:layout_toRightOf="@id/capture_crop_view"
+            android:background="#CC000000"/>
+
+        <ImageView
+            android:id="@+id/capture_mask_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/capture_crop_view"
+            android:layout_toLeftOf="@id/capture_mask_right"
+            android:layout_toRightOf="@id/capture_mask_left"
+            android:background="#CC000000"/>
+
+        <TextView
+            android:id="@+id/capture_scan_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/capture_crop_view"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="将二维码放入框内,即可自动扫描"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:id="@+id/capture_restart_scan"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="#66000000">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/_zbar_picture"
+                    android:background="@drawable/select_file_brower"
+                    android:scaleType="centerInside"
+                    android:layout_width="60dip"
+                    android:layout_height="60dip"  />
+                <TextView
+                    android:text="相册"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/_zbar_light"
+                    android:background="@drawable/select_light_"
+                    android:scaleType="centerInside"
+                    android:layout_width="60dip"
+                    android:layout_height="60dip"  />
+                <TextView
+                    android:text="灯光"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

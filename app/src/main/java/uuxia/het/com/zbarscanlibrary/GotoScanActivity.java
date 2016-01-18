@@ -6,30 +6,39 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 
+import uuxia.het.zbar.library.ZBarQrScanManager;
 import uuxia.het.zbar.library.callback.ZBarQrScanCallBack;
-import uuxia.het.zbar.library.view.ZBarQrScanManager;
 
 public class GotoScanActivity extends Activity implements ZBarQrScanCallBack {
 
-    private ZBarQrScanManager ZBarQrScanManager;
+    private ZBarQrScanManager ZBarZBarQrScanManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_goto_scan);
+        ZBarZBarQrScanManager = new ZBarQrScanManager();
+        ZBarZBarQrScanManager.onCreate(this);
+        ZBarZBarQrScanManager.setCallBack(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ZBarQrScanManager = new ZBarQrScanManager(this,findViewById(R.id.borad));
-        ZBarQrScanManager.setCallBack(this);
+        ZBarZBarQrScanManager.onResume();
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        ZBarQrScanManager.release();
+        ZBarZBarQrScanManager.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ZBarZBarQrScanManager.onDestroy();
     }
 
     @Override

@@ -1,70 +1,76 @@
-# Copyright (C) 2009 The Android Open Source Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Android NDK makefile 
 #
 
+MY_LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH := $(call my-dir)
-#APP_PATH:= $(NDK)/$(call my-dir) 
-
-include $(CLEAR_VARS) 
-
-LOCAL_MODULE := libiconv 
-LIBICONV := libiconv
-
-LOCAL_CFLAGS := -I$(LOCAL_PATH)/$(LIBICONV)
-LOCAL_SRC_FILES := $(LIBICONV)/iconv.c
-
-include $(BUILD_STATIC_LIBRARY) 
-
+# libiconv
 include $(CLEAR_VARS)
+LOCAL_PATH := $(MY_LOCAL_PATH)
 
-LOCAL_MODULE    := ZBarDecoder
+LOCAL_MODULE := libiconv
 
-LOCAL_SRC_FILES :=	convert.c \
-					decoder.c \
-					error.c \
-					image.c \
-					img_scanner.c \
-					refcnt.c \
-					scanner.c \
-					symbol.c \
-					video.c \
-					window.c \
-					qrcode/bch15_5.c \
-					qrcode/binarize.c \
-					qrcode/isaac.c \
-					qrcode/qrdec.c \
-					qrcode/qrdectxt.c \
-					qrcode/rs.c \
-					qrcode/util.c \
-					processor/null.c \
-					video/null.c \
-					window/null.c \
-					decoder/qr_finder.c \
-					decoder/code128.c \
-					decoder/code39.c \
-					decoder/code93.c \
-					decoder/codabar.c \
-					decoder/ean.c \
-					decoder/databar.c \
-					decoder/i25.c \
-					ZBarDecoderNativeManager.c
-	
-LOCAL_CFLAGS := -I$(LOCAL_PATH) -I$(LOCAL_PATH)/$(LIBICONV)
-LOCAL_LDLIBS := -llog
+LOCAL_CFLAGS := \
+    -Wno-multichar \
+    -D_ANDROID \
+    -DLIBDIR="c" \
+    -DBUILDING_LIBICONV \
+    -DBUILDING_LIBCHARSET \
+    -DIN_LIBRARY
 
-LOCAL_STATIC_LIBRARIES := libiconv
+LOCAL_SRC_FILES := \
+	libiconv-1.14/lib/iconv.c \
+	libiconv-1.14/libcharset/lib/localcharset.c \
+	libiconv-1.14/lib/relocatable.c
+
+LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH)/libiconv-1.14/include \
+	$(LOCAL_PATH)/libiconv-1.14/libcharset \
+	$(LOCAL_PATH)/libiconv-1.14/libcharset/include
 
 include $(BUILD_SHARED_LIBRARY)
 
+LOCAL_LDLIBS := -llog -lcharset
+
+# libzbarjni
+include $(CLEAR_VARS)
+
+LOCAL_PATH := $(MY_LOCAL_PATH)
+LOCAL_MODULE := ZBarDecoder
+LOCAL_SRC_FILES := \
+			zbarjni.c \
+			zbar/img_scanner.c \
+			zbar/decoder.c \
+			zbar/image.c \
+			zbar/symbol.c \
+			zbar/convert.c \
+			zbar/config.c \
+			zbar/scanner.c \
+			zbar/error.c \
+			zbar/refcnt.c \
+			zbar/video.c \
+			zbar/video/null.c \
+			zbar/decoder/code128.c \
+			zbar/decoder/code39.c \
+			zbar/decoder/code93.c \
+			zbar/decoder/codabar.c \
+			zbar/decoder/databar.c \
+			zbar/decoder/ean.c \
+			zbar/decoder/i25.c \
+			zbar/decoder/qr_finder.c \
+			zbar/qrcode/bch15_5.c \
+			zbar/qrcode/binarize.c \
+			zbar/qrcode/isaac.c \
+			zbar/qrcode/qrdec.c \
+			zbar/qrcode/qrdectxt.c \
+			zbar/qrcode/rs.c \
+			zbar/qrcode/util.c
+
+LOCAL_C_INCLUDES := \
+			$(LOCAL_PATH)/include \
+			$(LOCAL_PATH)/zbar \
+			$(LOCAL_PATH)/libiconv-1.14/include
+
+LOCAL_SHARED_LIBRARIES := libiconv
+
+include $(BUILD_SHARED_LIBRARY)
