@@ -12,7 +12,7 @@ ZbarScanLibrary是之前的ZBar解析二维码项目的重构和优化
 
 ```java
 /*
- * Copyright (C) 2014 Chen Tao <1076559197@qq.com>
+ * Copyright (C) 2014 uuxia <263996097@qq.com>
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
