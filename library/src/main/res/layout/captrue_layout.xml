@@ -140,8 +140,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/bottom_lay"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:visibility="invisible"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
